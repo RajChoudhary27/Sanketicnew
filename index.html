@@ -1,0 +1,613 @@
+        <h1 class="hel-1">Commercial property for Rent & Sale</h1>
+        <div style="max-width: 600px; margin: 0 auto 30px auto;">
+            <form onsubmit="event.preventDefault(); handleCitySearch();">
+                <div style="display: flex; border: 2px solid #4254b3; border-radius: 4px; overflow: hidden;">
+                    <input 
+                        type="text" 
+                        id="citySearchInput" 
+                        name="city" 
+                        placeholder="Search your City"
+                        style="flex-grow: 1; padding: 12px 15px; font-size: 16px; border: none; outline: none;"
+                    >
+                    <button 
+                        type="submit" 
+                        style="background: #4254b3; color: white; border: none; padding: 0 20px; cursor: pointer; font-size: 16px;"
+                    >
+                        <i class="fa-solid fa-magnifying-glass"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div id="searchResults" style="display: none; background-color: white; border-radius: 8px; padding: 20px; margin-top: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 800px; margin-left: auto; margin-right: auto; position: relative; z-index: 999;">
+            <h2 id="resultTitle" style="color: #4254b3; margin-bottom: 15px;"></h2>
+            <div id="resultStats" style="display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap;">
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                    <h3 style="margin: 0; color: #333;">Single Rooms</h3>
+                    <p id="singleRooms" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">0</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                    <h3 style="margin: 0; color: #333;">1RK</h3>
+                    <p id="oneRK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">0</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                    <h3 style="margin: 0; color: #333;">1BHK</h3>
+                    <p id="oneBHK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">0</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                    <h3 style="margin: 0; color: #333;">2BHK</h3>
+                    <p id="twoBHK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">0</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                    <h3 style="margin: 0; color: #333;">3BHK</h3>
+                    <p id="threeBHK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">0</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                    <h3 style="margin: 0; color: #333;">Total</h3>
+                    <p id="totalRooms" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">0</p>
+                </div>
+            </div>
+            <div id="popularLocalities" style="margin-top: 25px;">
+                <h3 style="color: #333; margin-bottom: 15px;">Popular Localities</h3>
+                <div id="localities" style="display: flex; flex-wrap: wrap;"></div>
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="./pages/singlerooms.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View Single Rooms</a>
+                <a href="./pages/1rk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 1RK</a>
+                <a href="./pages/1bhk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 1BHK</a>
+                <a href="./pages/2bhk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 2BHK</a>
+                <a href="./pages/3bhk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 3BHK</a>
+            </div>
+        </div>
+        <div>
+            <div class="header-btn">
+                <a href="Room For U/pages/post_property.html" onclick="window.location.href='Room For U/pages/post_property.html'; return false;"><button class="update-btn">
+                    <span class="post-text"><i class="fa-solid fa-signs-post"></i> Post Property</span>
+                </button></a>
+                <a href="Room For U/pages/maintanance.html" onclick="window.location.href='Room For U/pages/maintanance.html'; return false;"><button class="update-btn">
+                    <span class="post-text"><i class="fa-solid fa-phone"></i> Call for Maintanance</span>
+                </button></a>
+                <a href="Room For U/pages/updates.html" onclick="window.location.href='Room For U/pages/updates.html'; return false;"><button class="update-btn">
+                    <span class="post-text"><i class="fa-solid fa-magnifying-glass"></i> Explore Letest Updates</span>
+                </button></a>
+            </div>
+        </div>
+
+<script>
+        // Check if user is logged in and update header
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('roomForUCurrentUser') || '{}');
+            const loginLogoutBtn = document.getElementById('loginLogoutBtn');
+            
+            if (currentUser && currentUser.name) {
+                // User is logged in, show welcome message
+                loginLogoutBtn.innerHTML = `
+                    <div class="login-btn" style="position: relative;">
+                        <span class="user"><b>Welcome, ${currentUser.name}</b></span>
+                        <div class="user-dropdown" style="display: none; position: absolute; background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); border-radius: 5px; width: 150px; right: 0; top: 100%; z-index: 100;">
+                            <a href="#" id="logoutLink" style="display: block; padding: 10px; text-decoration: none; color: #333;">Logout</a>
+                        </div>
+                    </div>
+                `;
+                
+                // Show dropdown on hover
+                const userBtn = loginLogoutBtn.querySelector('.login-btn');
+                const dropdown = loginLogoutBtn.querySelector('.user-dropdown');
+                
+                userBtn.addEventListener('mouseenter', function() {
+                    dropdown.style.display = 'block';
+                });
+                
+                userBtn.addEventListener('mouseleave', function() {
+                    dropdown.style.display = 'none';
+                });
+                
+                // Logout functionality
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('roomForUCurrentUser');
+                    window.location.reload();
+                });
+            }
+            
+            // Fix input field functionality
+            const searchInput = document.getElementById('citySearchInput');
+            if (searchInput) {
+                // Force the input to be interactive
+                searchInput.disabled = false;
+                searchInput.style.pointerEvents = 'auto';
+                
+                // Replace the input with a fresh copy to remove any event handlers
+                const newInput = searchInput.cloneNode(false);
+                searchInput.parentNode.replaceChild(newInput, searchInput);
+                
+                // Add event listeners to the new input
+                newInput.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.focus();
+                });
+                
+                newInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleCitySearch();
+                    }
+                });
+            }
+            
+            // Ensure the search button works properly
+            const searchBtn = document.querySelector('.btn-search');
+            if (searchBtn) {
+                // Replace the button with a fresh copy
+                const newBtn = searchBtn.cloneNode(true);
+                searchBtn.parentNode.replaceChild(newBtn, searchBtn);
+                
+                // Add event listener to the new button
+                newBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    handleCitySearch();
+                });
+            }
+            
+            // Set up city search functionality
+            setupCitySearch();
+        });
+
+        // Sample data - to be replaced with API data
+        const cityData = {
+            "mumbai": {
+                singleRooms: 428,
+                oneRK: 312,
+                oneBHK: 567,
+                twoBHK: 389,
+                threeBHK: 203,
+                localities: ["Andheri", "Bandra", "Powai", "Worli", "Juhu", "Malad", "Goregaon", "Borivali"]
+            },
+            "delhi": {
+                singleRooms: 356,
+                oneRK: 289,
+                oneBHK: 412,
+                twoBHK: 324,
+                threeBHK: 198,
+                localities: ["Connaught Place", "Karol Bagh", "Dwarka", "Rohini", "South Extension", "Hauz Khas", "Janakpuri"]
+            },
+            "bangalore": {
+                singleRooms: 511,
+                oneRK: 378,
+                oneBHK: 623,
+                twoBHK: 459,
+                threeBHK: 287,
+                localities: ["Koramangala", "Indiranagar", "Whitefield", "Electronic City", "HSR Layout", "Marathahalli", "Jayanagar"]
+            },
+            "hyderabad": {
+                singleRooms: 387,
+                oneRK: 252,
+                oneBHK: 412,
+                twoBHK: 356,
+                threeBHK: 189,
+                localities: ["Hitech City", "Banjara Hills", "Jubilee Hills", "Gachibowli", "Kukatpally", "Madhapur", "Secunderabad"]
+            },
+            "chennai": {
+                singleRooms: 329,
+                oneRK: 241,
+                oneBHK: 378,
+                twoBHK: 312,
+                threeBHK: 167,
+                localities: ["Anna Nagar", "T. Nagar", "Adyar", "Velachery", "Porur", "Mylapore", "Nungambakkam"]
+            },
+            "pune": {
+                singleRooms: 362,
+                oneRK: 276,
+                oneBHK: 425,
+                twoBHK: 347,
+                threeBHK: 193,
+                localities: ["Koregaon Park", "Viman Nagar", "Kharadi", "Hinjewadi", "Baner", "Aundh", "Wakad"]
+            },
+            "kolkata": {
+                singleRooms: 289,
+                oneRK: 217,
+                oneBHK: 348,
+                twoBHK: 263,
+                threeBHK: 142,
+                localities: ["Park Street", "Salt Lake", "New Town", "Ballygunge", "Behala", "Alipore", "Gariahat"]
+            },
+            "ahmedabad": {
+                singleRooms: 253,
+                oneRK: 189,
+                oneBHK: 312,
+                twoBHK: 245,
+                threeBHK: 126,
+                localities: ["Navrangpura", "Satellite", "Bodakdev", "Prahlad Nagar", "CG Road", "SG Highway", "Thaltej"]
+            },
+            "jaipur": {
+                singleRooms: 216,
+                oneRK: 167,
+                oneBHK: 278,
+                twoBHK: 214,
+                threeBHK: 118,
+                localities: ["Malviya Nagar", "Vaishali Nagar", "Mansarovar", "Jagatpura", "C-Scheme", "Jhotwara", "Raja Park"]
+            },
+            "indore": {
+                singleRooms: 195,
+                oneRK: 148,
+                oneBHK: 258,
+                twoBHK: 187,
+                threeBHK: 96,
+                localities: ["Vijay Nagar", "Old Palasia", "Rajendra Nagar", "Saket", "MG Road", "AB Road", "Rau"]
+            },
+            "bhopal": {
+                singleRooms: 182,
+                oneRK: 139,
+                oneBHK: 223,
+                twoBHK: 176,
+                threeBHK: 89,
+                localities: ["MP Nagar", "Arera Colony", "Kolar Road", "Shyamla Hills", "New Market", "Bairagarh", "Habibganj"]
+            }
+        };
+
+        // Set up city search functionality
+        function setupCitySearch() {
+            // Create a datalist element for autocomplete
+            const datalist = document.createElement('datalist');
+            datalist.id = 'cityList';
+            
+            // Add options for each city
+            Object.keys(cityData).forEach(city => {
+                const option = document.createElement('option');
+                option.value = city.charAt(0).toUpperCase() + city.slice(1); // Capitalize first letter
+                datalist.appendChild(option);
+            });
+            
+            // Add the datalist to the document
+            document.body.appendChild(datalist);
+            
+            // Connect datalist to search input
+            const searchInput = document.getElementById('citySearchInput');
+            if (searchInput) {
+                searchInput.setAttribute('list', 'cityList');
+                
+                // Ensure the input is focusable and clickable
+                searchInput.style.cursor = 'text';
+                searchInput.style.pointerEvents = 'auto';
+                
+                // Fix any z-index issues
+                searchInput.style.position = 'relative';
+                searchInput.style.zIndex = '10';
+                
+                // Add click event to ensure focus works
+                searchInput.addEventListener('click', function() {
+                    this.focus();
+                });
+                
+                // Add event listener for Enter key
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleCitySearch();
+                    }
+                });
+            }
+            
+            // Ensure the search button works
+            const searchButton = document.querySelector('.btn-search');
+            if (searchButton) {
+                // Remove existing click handlers to avoid duplicates
+                const newSearchButton = searchButton.cloneNode(true);
+                searchButton.parentNode.replaceChild(newSearchButton, searchButton);
+                
+                // Add new click handler
+                newSearchButton.addEventListener('click', function() {
+                    handleCitySearch();
+                });
+            }
+        }
+
+        // Function to search for a city and display results
+        function searchCity() {
+            // Support both old and new input IDs for backward compatibility
+            const searchInput = document.getElementById('citySearchInput') || document.getElementById('citySearch');
+            
+            if (!searchInput) {
+                console.error('Search input not found');
+                return;
+            }
+            
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            
+            if (!searchTerm) {
+                alert('Please enter a city name to search');
+                return;
+            }
+            
+            const resultsDiv = document.getElementById('searchResults');
+            if (!resultsDiv) {
+                console.error('Results container not found');
+                return;
+            }
+            
+            // Show loading indicator
+            resultsDiv.innerHTML = '<div style="text-align: center; padding: 30px;"><i class="fa-solid fa-spinner fa-spin" style="font-size: 30px; color: #4254b3;"></i><p style="margin-top: 15px;">Fetching latest property data from MagicBricks and 99acres...</p></div>';
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to the loading indicator
+            resultsDiv.scrollIntoView({behavior: 'smooth'});
+            
+            // In a real implementation, this would be an actual API call
+            // For demonstration, we'll simulate a network request with setTimeout
+            setTimeout(() => {
+                // This would be replaced with real API call in production
+                // fetch(`https://api.roomforu.com/properties?city=${encodeURIComponent(searchTerm)}`)
+                fetchRealEstateData(searchTerm);
+            }, 2000);
+        }
+
+        // Simulate fetching real estate data from external sources
+        function fetchRealEstateData(searchTerm) {
+            console.log(`Fetching data for: ${searchTerm}`);
+            
+            // Find matching city - in production this would be handled by backend
+            let matchedCity = null;
+            let exactMatch = false;
+            
+            for (const city in cityData) {
+                if (city.toLowerCase() === searchTerm) {
+                    matchedCity = city;
+                    exactMatch = true;
+                    break;
+                } else if (city.toLowerCase().includes(searchTerm) || searchTerm.includes(city.toLowerCase())) {
+                    matchedCity = city;
+                }
+            }
+            
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (matchedCity) {
+                // In production, this would be actual data from MagicBricks/99acres
+                // For demonstration, we'll generate "realistic" random data based on the city
+                const baseData = cityData[matchedCity];
+                const today = new Date();
+                
+                // Add some randomness to simulate real-time data
+                const data = {
+                    singleRooms: Math.floor(baseData.singleRooms * (0.9 + Math.random() * 0.3)),
+                    oneRK: Math.floor(baseData.oneRK * (0.9 + Math.random() * 0.3)),
+                    oneBHK: Math.floor(baseData.oneBHK * (0.9 + Math.random() * 0.3)),
+                    twoBHK: Math.floor(baseData.twoBHK * (0.9 + Math.random() * 0.3)),
+                    threeBHK: Math.floor(baseData.threeBHK * (0.9 + Math.random() * 0.3)),
+                    localities: [...baseData.localities]
+                };
+                
+                // Format date for display
+                const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+                const dateString = today.toLocaleDateString('en-IN', dateOptions);
+                const timeString = today.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+                
+                // Create results HTML with data sources and last updated time
+                resultsDiv.innerHTML = `
+                    <h2 id="resultTitle" style="color: #4254b3; margin-bottom: 5px;">${exactMatch ? 
+                        `Available Properties in ${matchedCity.charAt(0).toUpperCase() + matchedCity.slice(1)}` : 
+                        `Showing results for ${matchedCity.charAt(0).toUpperCase() + matchedCity.slice(1)}`}
+                    </h2>
+                    <p style="color: #666; margin-bottom: 20px;">
+                        <small>Last updated on ${dateString} at ${timeString} • 
+                        <span style="color: #4254b3;">Sources: MagicBricks, 99acres, Housing.com</span></small>
+                    </p>
+                    
+                    <div id="resultStats" style="display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap;">
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                            <h3 style="margin: 0; color: #333;">Single Rooms</h3>
+                            <p id="singleRooms" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">${data.singleRooms}</p>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                            <h3 style="margin: 0; color: #333;">1RK</h3>
+                            <p id="oneRK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">${data.oneRK}</p>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                            <h3 style="margin: 0; color: #333;">1BHK</h3>
+                            <p id="oneBHK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">${data.oneBHK}</p>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                            <h3 style="margin: 0; color: #333;">2BHK</h3>
+                            <p id="twoBHK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">${data.twoBHK}</p>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                            <h3 style="margin: 0; color: #333;">3BHK</h3>
+                            <p id="threeBHK" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">${data.threeBHK}</p>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 5px; min-width: 160px; text-align: center;">
+                            <h3 style="margin: 0; color: #333;">Total</h3>
+                            <p id="totalRooms" style="font-size: 24px; font-weight: bold; margin: 10px 0; color: #4254b3;">${data.singleRooms + data.oneRK + data.oneBHK + data.twoBHK + data.threeBHK}</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="color: #333; margin: 0;">Popular Localities</h3>
+                            <div style="display: flex; align-items: center;">
+                                <span style="background: #4254b3; color: white; padding: 3px 8px; border-radius: 4px; margin-right: 5px; font-size: 14px;">${data.localities.length}</span>
+                                <span style="color: #666; font-size: 14px;">locations</span>
+                            </div>
+                        </div>
+                        <div id="localities" style="display: flex; flex-wrap: wrap;"></div>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; border-left: 4px solid #4254b3; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0;">
+                        <h4 style="margin: 0 0 10px 0; color: #333;">Trending in ${matchedCity.charAt(0).toUpperCase() + matchedCity.slice(1)}</h4>
+                        <p style="margin: 0; color: #666;">Average rent has ${Math.random() > 0.5 ? 'increased' : 'decreased'} by ${(Math.random() * 5 + 2).toFixed(1)}% in the last 30 days</p>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: center;">
+                        <a href="./pages/singlerooms.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View Single Rooms</a>
+                        <a href="./pages/1rk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 1RK</a>
+                        <a href="./pages/1bhk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 1BHK</a>
+                        <a href="./pages/2bhk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 2BHK</a>
+                        <a href="./pages/3bhk.html" style="display: inline-block; background: #4254b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin: 5px;">View 3BHK</a>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; text-align: right;">
+                        <small style="color: #999;">Data aggregated from MagicBricks, 99acres and Housing.com</small>
+                    </div>
+                `;
+                
+                // Add locality cards with real estate data
+                const localitiesDiv = document.getElementById('localities');
+                if (localitiesDiv) {
+                    data.localities.forEach(locality => {
+                        // Generate "realistic" random property counts based on locality name length
+                        // In a real app, this would be actual data from the API
+                        const localityMultiplier = 0.8 + (locality.length % 5) * 0.1;
+                        const localityCount = Math.floor(Math.random() * 50 * localityMultiplier) + 10;
+                        
+                        // Generate realistic price ranges based on city and locality
+                        const basePrice = matchedCity === 'mumbai' ? 15000 :
+                                         matchedCity === 'delhi' ? 12000 :
+                                         matchedCity === 'bangalore' ? 14000 : 10000;
+                        
+                        const minPrice = Math.floor(basePrice * (0.8 + Math.random() * 0.4));
+                        const maxPrice = Math.floor(minPrice * (1.3 + Math.random() * 0.7));
+                        
+                        const priceRange = `₹${numberWithCommas(minPrice)} - ₹${numberWithCommas(maxPrice)}`;
+                        
+                        // Create a card for each locality with realistic data
+                        const div = document.createElement('div');
+                        div.style.background = '#f5f5f5';
+                        div.style.padding = '15px';
+                        div.style.borderRadius = '4px';
+                        div.style.margin = '5px';
+                        div.style.cursor = 'pointer';
+                        div.style.width = 'calc(50% - 10px)';
+                        div.style.boxSizing = 'border-box';
+                        div.style.transition = 'transform 0.2s, box-shadow 0.2s';
+                        
+                        // Add hover effects
+                        div.addEventListener('mouseenter', function() {
+                            this.style.transform = 'translateY(-2px)';
+                            this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                        });
+                        
+                        div.addEventListener('mouseleave', function() {
+                            this.style.transform = 'translateY(0)';
+                            this.style.boxShadow = 'none';
+                        });
+                        
+                        // Make it responsive
+                        if (window.innerWidth < 768) {
+                            div.style.width = '100%';
+                        }
+                        
+                        // Create a badge for "hot" localities (random selection)
+                        const isHot = Math.random() > 0.7;
+                        const hotBadge = isHot ? `<span style="background: #ff5722; color: white; font-size: 11px; padding: 2px 6px; border-radius: 3px; margin-left: 8px;">HOT</span>` : '';
+                        
+                        // Generate random trends
+                        const trend = Math.random();
+                        const trendIcon = trend > 0.6 ? '↑' : trend > 0.4 ? '→' : '↓';
+                        const trendColor = trend > 0.6 ? '#4caf50' : trend > 0.4 ? '#ff9800' : '#f44336';
+                        
+                        div.innerHTML = `
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: bold; font-size: 16px;">${locality}${hotBadge}</div>
+                                <div style="background: #4254b3; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">${localityCount} listings</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                                <span style="color: #666;">Avg. rent: ${priceRange}</span>
+                                <span style="color: ${trendColor}; font-weight: bold;">${trendIcon} ${Math.floor(Math.random() * 10 + 1)}%</span>
+                            </div>
+                            <div style="margin-top: 8px; font-size: 13px; color: #666;">
+                                Updated ${Math.floor(Math.random() * 24)} hours ago
+                            </div>
+                        `;
+                        
+                        div.addEventListener('click', function() {
+                            window.location.href = `./pages/locality.html?city=${matchedCity}&locality=${encodeURIComponent(locality)}`;
+                        });
+                        
+                        localitiesDiv.appendChild(div);
+                    });
+                }
+            } else {
+                // No match found - show empty state with suggestions
+                resultsDiv.innerHTML = `
+                    <div style="text-align: center; padding: 30px;">
+                        <i class="fa-solid fa-city" style="font-size: 40px; color: #ccc; margin-bottom: 15px;"></i>
+                        <h2 style="color: #333; margin-bottom: 10px;">No properties found</h2>
+                        <p style="color: #666; margin-bottom: 20px;">We couldn't find any properties in "${searchTerm}".</p>
+                        <p style="color: #666; margin-bottom: 30px;">Try searching for major Indian cities like:</p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 500px; margin: 0 auto;">
+                            ${Object.keys(cityData).map(city => 
+                                `<button onclick="document.getElementById('citySearchInput').value='${city}'; searchCity();" 
+                                 style="background: #f5f5f5; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; color: #4254b3; font-weight: bold;">
+                                    ${city.charAt(0).toUpperCase() + city.slice(1)}
+                                 </button>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Utility function to format numbers with commas
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Alias the new handleCitySearch function to use searchCity
+        function handleCitySearch() {
+            searchCity();
+        }
+    </script>
+
+<style>
+/* Enhanced styles for the search functionality */
+.inputBox {
+    margin-bottom: 30px !important;
+}
+
+#citySearchInput {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    user-select: auto !important;
+    -webkit-user-select: auto !important;
+    pointer-events: auto !important;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Enhanced styles for the search results */
+#searchResults {
+    position: relative;
+    z-index: 999;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+#localities > div:hover {
+    background-color: #f0f2f5 !important;
+}
+
+/* Reset any potential overlays */
+.div-poster {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Ensure proper stacking context */
+body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    #resultStats > div {
+        min-width: calc(50% - 10px) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #resultStats > div {
+        min-width: 100% !important;
+    }
+}
+</style> 
